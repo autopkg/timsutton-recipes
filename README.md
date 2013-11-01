@@ -1,4 +1,4 @@
-my-autopkg-recipes
+timsutton-recipes
 ==================
 
-AutoPkg recipes
+Miscallaneous recipes for AutoPkg.
