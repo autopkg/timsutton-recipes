@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release version of Audacity from brew-cask.
+    </string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.download.audacity</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Audacity</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.5</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>BrewCaskInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>cask_name</key>
+                <string>audacity</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
