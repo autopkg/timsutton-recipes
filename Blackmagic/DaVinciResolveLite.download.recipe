@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release version of DaVinci Resolve Lite.
+
+This is based on extracting a version string from the downloads page and using
+this is in a predictable URL.
+    </string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.download.davinciresolvelite</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>DaVinciResolveLite</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.9</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://www.blackmagicdesign.com/support/detail?sid=3948&amp;pid=11735&amp;leg=false&amp;os=mac</string>
+                <key>re_pattern</key>
+                <string>DaVinci Resolve Lite (?P&lt;version&gt;(([0-9]+)\.)*[0-9]*) for Mac</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://software.blackmagicdesign.com/DaVinciResolve/Lite/DaVinci_Resolve_Lite_%version%_Mac.zip</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
