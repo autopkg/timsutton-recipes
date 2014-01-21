@@ -13,18 +13,20 @@
         <string>Audacity</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.5</string>
+    <string>0.2.9</string>
     <key>Process</key>
     <array>
-        <dict>
-            <key>Processor</key>
-            <string>BrewCaskInfoProvider</string>
-            <key>Arguments</key>
-            <dict>
-                <key>cask_name</key>
-                <string>audacity</string>
-            </dict>
-        </dict>
+<dict>
+    <key>Processor</key>
+    <string>URLTextSearcher</string>
+    <key>Arguments</key>
+    <dict>
+        <key>url</key>
+        <string>http://audacity.sourceforge.net/download/mac</string>
+        <key>re_pattern</key>
+        <string>(?P&lt;url&gt;http.*?dmg)</string>
+    </dict>
+</dict>
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
