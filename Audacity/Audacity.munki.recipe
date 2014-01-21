@@ -29,7 +29,7 @@
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.5</string>
+    <string>0.2.9</string>
     <key>ParentRecipe</key>
     <string>com.github.timsutton.download.audacity</string>
     <key>Process</key>
