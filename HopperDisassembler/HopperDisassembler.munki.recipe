@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads latest version of Hopper Disassembler and imports into a Munki repo.</string>
     <key>Identifier</key>
-    <string>com.github.timsutton.download.HopperDisassembler</string>
+    <string>com.github.timsutton.munki.HopperDisassembler</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
