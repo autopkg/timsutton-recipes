@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads latest version of Hopper Disassembler and imports into a Munki repo.</string>
+    <string>Downloads latest version of Hopper Disassembler 3 and imports into a Munki repo.</string>
     <key>Identifier</key>
-    <string>com.github.timsutton.munki.HopperDisassembler</string>
+    <string>com.github.timsutton.munki.HopperDisassembler3</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>HopperDisassembler</string>
+        <string>HopperDisassembler3</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/Hopper</string>
         <key>pkginfo</key>
@@ -31,7 +31,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.timsutton.download.HopperDisassembler</string>
+    <string>com.github.timsutton.download.HopperDisassembler3</string>
     <key>Process</key>
     <array>
         <dict>
