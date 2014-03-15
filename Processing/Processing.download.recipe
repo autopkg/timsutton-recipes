@@ -13,16 +13,18 @@
         <string>Processing</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.5</string>
+    <string>0.2.9</string>
     <key>Process</key>
     <array>
         <dict>
             <key>Processor</key>
-            <string>BrewCaskInfoProvider</string>
+            <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
-                <key>cask_name</key>
-                <string>processing</string>
+                <key>url</key>
+                <string>https://processing.org/download/?processing</string>
+                <key>re_pattern</key>
+                <string>(?P&lt;url&gt;http.*?macosx.zip)</string>
             </dict>
         </dict>
         <dict>
