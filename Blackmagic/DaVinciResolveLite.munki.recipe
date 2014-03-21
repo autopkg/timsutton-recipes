@@ -37,6 +37,8 @@ restart, as it reloads its kext and support daemons in postinstall scripts.
             <string>DaVinci color correctors have been the standard in post production since 1984. There are thousands of colorists worldwide who understand the performance, quality and workflow of DaVinci. DaVinci is the name behind more feature films, television commercials, documentaries, television production and music videos than any other grading system. When you’re in a room full of demanding clients with conflicting ideas, colorists know that only DaVinci has the quality, real time performance, creative features and powerful control panel you need to work fast!</string>
             <key>display_name</key>
             <string>DaVinci Resolve Lite</string>
+            <key>minimum_os_version</key>
+            <string>10.6.7</string>
             <key>name</key>
             <string>%NAME%</string>
         </dict>
