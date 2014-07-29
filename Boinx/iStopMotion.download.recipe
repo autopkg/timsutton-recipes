@@ -3,7 +3,10 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of iStopMotion.</string>
+    <string>Downloads the current release version of iStopMotion 3.
+
+We have to send a fair amount of information to the server that
+returns a Sparkle feed.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.iStopMotion</string>
     <key>Input</key>
@@ -20,8 +23,28 @@
             <string>SparkleUpdateInfoProvider</string>
             <key>Arguments</key>
             <dict>
+                <key>appcast_query_pairs</key>
+                <dict>
+                    <key>appName</key>
+                    <string>iStopMotion</string>
+<!-- appVersion is the CFBundleVersion of the app - we don't seem to need it,
+     or it could be just '0'
+                    <key>appVersion</key>
+                    <string>15980</string>
+ -->                    <key>lang</key>
+                    <string>en</string>
+                    <key>appID</key>
+                    <string>ISTO</string>
+<!-- We need versionString to be something, picking the first 3.x version seems to work -->
+                    <key>versionString</key>
+                    <string>3.0</string>
+                    <key>locale</key>
+                    <string>en_US</string>
+                    <key>feedtype</key>
+                    <string>1</string>
+                </dict>
                 <key>appcast_url</key>
-                <string>http://version.boinx.com/appcast/iStopMotion.xml</string>
+                <string>https://sparkle.boinx.com/appcast.lasso</string>
             </dict>
         </dict>
         <dict>

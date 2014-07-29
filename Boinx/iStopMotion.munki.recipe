@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads and imports iStopMotion into Munki.</string>
+    <string>Downloads and imports iStopMotion 3 into Munki.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.munki.iStopMotion</string>
     <key>Input</key>
