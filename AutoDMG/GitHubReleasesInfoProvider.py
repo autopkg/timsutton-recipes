@@ -68,7 +68,10 @@ class GitHubReleasesInfoProvider(Processor):
         req.add_header("Accept", "application/octet-stream")
         if token:
             req.add_header("Authorization", "token %s" % token)
-        urlfd = urllib2.urlopen(req)
+        try:
+            urlfd = urllib2.urlopen(req)
+        except urllib2.URLError as e:
+            raise ProcessorError("URL error on retrieving assets: %s" % e)
         asset_url = urlfd.geturl()
         return asset_url
 
