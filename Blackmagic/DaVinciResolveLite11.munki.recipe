@@ -3,11 +3,12 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of DaVinci Resolve Lite and imports into Munki.
+    <string>Downloads the most recent version of DaVinci Resolve Lite 11 and imports into Munki.
 
-The package for Resolve Lite uses version strings like '10.0.3lite', '10.1lite', etc. This version
-is not properly parsed, so instead we extract the application bundle so that we can use it for
-an installs item and the pkginfo version.
+Please see directions in the download recipe about additional Input variables required for this
+recipe.
+
+We extract the application bundle so that we can use it for an installs item and the pkginfo version.
 
 Resolve Lite also includes the CUDA driver installed via a postinstall script. It may or may not
 install, depending on whether a equivalent version of the CUDA driver exists already on the system.
@@ -17,14 +18,20 @@ actual installation. It can be found here within this recipe's CACHE_DIR (look f
 pkg_payload/Library/Application Support/Blackmagic Design/DaVinci Resolve/Prereqs/install.sh
 
 Even if the CUDA driver does install via the Resolve Lite installer pkg, it should not require a
-restart, as it reloads its kext and support daemons in postinstall scripts.
+restart, as it reloads its kext and support daemons in postinstall scripts. You may consider
+adding the CUDA driver as a separate item in Munki and adding it as a 'requires' for Resolve.
+
+One caveat with this package, is that this installer runs a script that evalutes
+the owner of /dev/console to derive a home directory, which then is configured system-wide
+as a cache location for Resolve. If this installer is run while a user is logged in, then
+this user's home will be used, and if run at the loginwindow, the root user's home will be.
 </string>
     <key>Identifier</key>
-    <string>com.github.timsutton.munki.davinciresolvelite</string>
+    <string>com.github.timsutton.munki.davinciresolvelite11</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>DaVinciResolveLite</string>
+        <string>DaVinciResolveLite11</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/%NAME%</string>
         <key>pkginfo</key>
@@ -36,17 +43,37 @@ restart, as it reloads its kext and support daemons in postinstall scripts.
             <key>description</key>
             <string>DaVinci color correctors have been the standard in post production since 1984. There are thousands of colorists worldwide who understand the performance, quality and workflow of DaVinci. DaVinci is the name behind more feature films, television commercials, documentaries, television production and music videos than any other grading system. When you’re in a room full of demanding clients with conflicting ideas, colorists know that only DaVinci has the quality, real time performance, creative features and powerful control panel you need to work fast!</string>
             <key>display_name</key>
-            <string>DaVinci Resolve Lite</string>
+            <string>DaVinci Resolve Lite 11</string>
             <key>minimum_os_version</key>
-            <string>10.6.7</string>
+            <string>10.8.5</string>
             <key>name</key>
             <string>%NAME%</string>
+            <key>uninstallable</key>
+            <true/>
+            <key>uninstall_method</key>
+            <string>uninstall_script</string>
+            <key>uninstall_script</key>
+            <string>#!/bin/sh
+            # Run the uninstaller script provided with the app.
+            # Alternatively, replace this with your own version of their uninstaller.
+            # For example, their uninstaller intentionally leaves the following on the
+            # system, which you may disagree with:
+            # - /Library/Application Support/Blackmagic Design/DaVinci Resolve
+            # - /Library/Preferences/Blackmagic Design/DaVinci Resolve
+            #
+            # Their uninstaller is also executable and world-writable.
+
+            UNINSTALL_SCRIPT="/Applications/DaVinci Resolve/Uninstall Resolve.app/Contents/Resources/uninstall.sh"
+
+            [ -x "${UNINSTALL_SCRIPT}" ] || exit 1
+            "${UNINSTALL_SCRIPT}"
+            </string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.timsutton.download.davinciresolvelite</string>
+    <string>com.github.timsutton.download.davinciresolvelite11</string>
     <key>Process</key>
     <array>
         <dict>
@@ -99,7 +126,7 @@ restart, as it reloads its kext and support daemons in postinstall scripts.
             <key>Arguments</key>
             <dict>
                 <key>info_path</key>
-                <string>%RECIPE_CACHE_DIR%/pkg_payload/Applications/DaVinci Resolve.app</string>
+                <string>%RECIPE_CACHE_DIR%/pkg_payload/Applications/DaVinci Resolve/DaVinci Resolve.app</string>
             </dict>
         </dict>
         <dict>
@@ -109,7 +136,7 @@ restart, as it reloads its kext and support daemons in postinstall scripts.
                 <string>%RECIPE_CACHE_DIR%/pkg_payload</string>
                 <key>installs_item_paths</key>
                 <array>
-                    <string>/Applications/DaVinci Resolve.app</string>
+                    <string>/Applications/DaVinci Resolve/DaVinci Resolve.app</string>
                 </array>
             </dict>
             <key>Processor</key>
