@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the most recent version of Go for OS X from the official
+Golang downloads page.
+
+Input variables:
+ARCH: One of: amd64, 386
+OSX_VERS: As of 1.4, the Go release is offered in versions for 10.6+
+          and 10.8+
+</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.download.Go</string>
+    <key>Input</key>
+    <dict>
+        <key>ARCH</key>
+        <string>amd64</string>
+        <key>OSX_VERS</key>
+        <string>10.8</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.9</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://golang.org/dl/</string>
+                <key>re_pattern</key>
+                <string>(?P&lt;url&gt;http.*?%ARCH%-osx%OSX_VERS%.pkg)</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads and imports Go into Munki, from the official Golang
+downloads page.
+
+See Go.download for additional Input variables.
+
+Note that the installer pkgs have identifiers like 'go1.3.2', 'go1.4', etc.
+As long as this 'go' prefix remains, Munki will compare package versions
+as expected.</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.munki.Go</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Go</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/Go</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.</string>
+            <key>display_name</key>
+            <string>Go Programming Language</string>
+            <key>minimum_os_version</key>
+            <string>%OSX_VERS%</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.9</string>
+    <key>ParentRecipe</key>
+    <string>com.github.timsutton.download.Go</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
