@@ -19,9 +19,9 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://www.activestate.com/komodo-edit/downloads</string>
+                <string>http://komodoide.com/download/edit-osx</string>
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;http.*?dmg)</string>
+                <string>(?P&lt;url&gt;http://.*?Komodo-Edit.*?dmg)</string>
             </dict>
         </dict>
         <dict>
