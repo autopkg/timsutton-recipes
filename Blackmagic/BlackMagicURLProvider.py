@@ -139,7 +139,7 @@ class BlackMagicURLProvider(Processor):
 
         # ensure our product contains info we need
         try:
-            download_id = latest_prod["urls"]["Mac OS X"]["downloadId"]
+            download_id = latest_prod["urls"]["Mac OS X"][0]["downloadId"]
             desc = latest_prod["desc"]
         except KeyError:
             raise ProcessorError("Metadata for product is missing at the "
