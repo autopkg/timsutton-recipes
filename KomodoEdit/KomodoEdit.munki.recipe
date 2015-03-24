@@ -3,7 +3,8 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads and imports Komodo Edit into Munki.
+    <string>Downloads and imports Komodo Edit into Munki. The current version
+is version 9.
 
 The CFBundleVersion is used for version comparison, because historically
 with Komodo 8, only the x.y version is stored in CFBundleShortVersionString,
@@ -24,7 +25,7 @@ whereas CFBundleVersion contains x.y.z.
                 <string>testing</string>
             </array>
             <key>description</key>
-            <string>Komodo Edit is a lean editor with a sleek interface. You'll enjoy excellent coding in many web languages, including Python, PHP, Ruby, Perl, HTML, CSS and JavaScript</string>
+            <string>Komodo Edit is a lean editor with a sleek interface. You'll enjoy excellent coding in many web languages, including Python, PHP, Ruby, Perl, HTML, CSS and JavaScript.</string>
             <key>display_name</key>
             <string>Komodo Edit</string>
             <key>name</key>
@@ -43,7 +44,7 @@ whereas CFBundleVersion contains x.y.z.
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%pathname%/Komodo Edit 8.app/Contents/Info.plist</string>
+                <string>%pathname%/Komodo Edit 9.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleVersion</string>
             </dict>
