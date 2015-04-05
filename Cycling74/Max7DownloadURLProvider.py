@@ -72,14 +72,9 @@ class Max7DownloadURLProvider(Processor):
         # except:
         #     do stuff
         # print version_meta
-        (website_content, resp_headers) = self.return_content_or_error(
-            "http://cycling74.com/downloads/max7upgrade",
-            resp_headers=["Set-Cookie"])
-        if not resp_headers["Set-Cookie"]:
-            raise ProcessorError(
-                ("Expected to get a cookie from Max 7 download page, but none "
-                 "received."))
-        cookie = resp_headers["Set-Cookie"]
+
+        (website_content, _) = self.return_content_or_error(
+            "http://cycling74.com/downloads")
 
         website_data = re.search(r"(/.*dmg)\"", website_content)
         if not website_data:
@@ -89,18 +84,15 @@ class Max7DownloadURLProvider(Processor):
         if url_one.startswith("/"):
             url_one = base_url + url_one
 
-        (thanks_content, _) = self.return_content_or_error(
-            url_one,
-            req_headers={"Cookie": cookie})
-        thanks_data = re.search(r"(filepivot\.com.+?dmg)", thanks_content)
+        (thanks_content, _) = self.return_content_or_error(url_one)
+        thanks_data = re.search(r"(http://filepivot.+?dmg)", thanks_content)
         if not thanks_data:
             raise ProcessorError(
                 ("Could not locate second download link on Max 7 'thanks "
                  "for downloading' page."))
         url_two = thanks_data.groups()[0]
 
-        self.env["url"] = "http://" + url_two
-        self.env["request_headers"] = {"Cookie": cookie}
+        self.env["url"] = url_two
 
 
 if __name__ == "__main__":
