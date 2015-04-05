@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release of Serf from http://serfdom.io</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.download.Serf</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Serf</string>
+        <key>PRODUCT</key>
+        <string>serf</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://serfdom.io/downloads.html</string>
+                <key>re_pattern</key>
+                <string>(?P&lt;url&gt;http.*?(?P&lt;version&gt;[0-9]+\.[0-9]+\.[0-9])_darwin_amd64.zip)</string>
+            </dict>
+        </dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
