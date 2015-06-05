@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads and imports Fission 2 into Munki.
+
+SYSTEM_VERSION is a minimum OS version expressed as a four-character
+integer, i.e. (10majorminor). Fission 2 currently requires 10.7,
+but it's possible that later revisions will require a higher OS,
+version so this may be overridden.
+
+The Fission app already includes the minimum OS version required
+in its application bundle, so Munki will automatically set the
+correct minimum_os_version pkginfo key.</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.munki.Fission2</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Fission2</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/%NAME%</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>Crop and trim audio, paste in or join files, or just rapidly split one long file into many. Fission is streamlined for fast editing. Plus, it works without the quality loss caused by other editors, so you can get perfect quality audio even when editing MP3 and AAC files.
+
+If you need to convert formats, Fission can do that too! You can rapidly export or batch convert files to the MP3, AAC, Apple Lossless, FLAC, AIFF, and WAV formats.</string>
+            <key>display_name</key>
+            <string>Fission 2</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.4.2</string>
+    <key>ParentRecipe</key>
+    <string>com.github.timsutton.download.Fission2</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>DmgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_root</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>dmg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%dmg_path%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the most recent version of Fission 2.
+
+SYSTEM_VERSION is a minimum OS version expressed as a four-character
+integer, i.e. (10majorminor), which is sent to the RA Sparkle feed
+server. Fission 2 currently requires 10.7, but it's possible that
+later revisions will require a higher OS, so this may be overridden.
+</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.download.Fission2</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Fission2</string>
+        <key>SYSTEM_VERSION</key>
+        <string>1070</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.4.2</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>SparkleUpdateInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>alternate_xmlns_url</key>
+                <string>http://rogueamoeba.com/public/rss/sparkle/</string>
+                <key>appcast_url</key>
+                <string>http://rogueamoeba.net/ping/versionCheck.cgi</string>
+                <key>appcast_query_pairs</key>
+                <dict>
+                    <key>bundleid</key>
+                    <string>com.rogueamoeba.Fission</string>
+                    <key>format</key>
+                    <string>sparkle</string>
+                    <key>system</key>
+                    <string>%SYSTEM_VERSION%</string>
+                    <key>version</key>
+                    <string>2000000</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>filename</key>
+                <string>%NAME%.zip</string>
+                <key>request_headers</key>
+                <dict>
+                    <key>User-Agent</key>
+                    <string>Sparkle</string>
+                </dict>
+            </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>archive_path</key>
+                <string>%pathname%</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/Fission.app</string>
+                <key>requirement</key>
+                <string>identifier "com.rogueamoeba.Fission" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7266XEXAPM")</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
