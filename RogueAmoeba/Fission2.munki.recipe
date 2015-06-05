@@ -6,9 +6,9 @@
     <string>Downloads and imports Fission 2 into Munki.
 
 SYSTEM_VERSION is a minimum OS version expressed as a four-character
-integer, i.e. (10majorminor). Fission 2 currently requires 10.7,
-but it's possible that later revisions will require a higher OS,
-version so this may be overridden.
+integer, i.e. (10majorminor), which is sent to the RA Sparkle feed
+server. Fission 2 currently requires 10.7, but it's possible that
+later revisions will require a higher OS, so this may be overridden.
 
 The Fission app already includes the minimum OS version required
 in its application bundle, so Munki will automatically set the
