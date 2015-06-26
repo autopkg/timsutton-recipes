@@ -17,22 +17,16 @@
     <string>0.3.0</string>
     <key>Process</key>
     <array>
-        <dict>
-            <key>Processor</key>
-            <string>HashiCorpCheckpointDataProvider</string>
-            <key>Arguments</key>
-            <dict>
-                <key>product</key>
-                <string>%PRODUCT%</string>
-            </dict>            
-        </dict>
+        <!-- Not using HashiCorpCheckpointDataProvider to get the Packer
+        URL because the host currently has issues with SSL on Python 2.7
+        on OS X -->
         <dict>
             <key>Processor</key>
             <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>%hashicorp_product_download_page%</string>
+                <string>http://packer.io/downloads.html</string>
                 <key>re_pattern</key>
                 <string>(?P&lt;url&gt;http.*?darwin_amd64.zip)</string>
             </dict>
