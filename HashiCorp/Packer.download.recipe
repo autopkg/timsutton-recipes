@@ -18,8 +18,10 @@
     <key>Process</key>
     <array>
         <!-- Not using HashiCorpCheckpointDataProvider to get the Packer
-        URL because the host currently has issues with SSL on Python 2.7
-        on OS X -->
+        URL because the packer.io HTTPS URL currently has issues with SSL
+        on Python 2.7 on OS X
+        Instead grab 'url' and 'version' vars from a URL like:
+        https://dl.bintray.com/mitchellh/packer/packer_0.8.0_darwin_amd64.zip -->
         <dict>
             <key>Processor</key>
             <string>URLTextSearcher</string>
@@ -28,7 +30,7 @@
                 <key>url</key>
                 <string>http://packer.io/downloads.html</string>
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;http.*?darwin_amd64.zip)</string>
+                <string>(?P&lt;url&gt;http.*?packer_(?P&lt;version&gt;.*?)_darwin_amd64.zip)</string>
             </dict>
         </dict>
 		<dict>
