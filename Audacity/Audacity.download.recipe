@@ -11,25 +11,23 @@
     <dict>
         <key>NAME</key>
         <string>Audacity</string>
-        <key>SOURCEFORGE_FILE_PATTERN</key>
-        <string>audacity-macosx.*\.dmg</string>
-        <key>SOURCEFORGE_PROJECT_ID</key>
-        <string>6235</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.4.0</string>
+    <string>0.2.9</string>
     <key>Process</key>
     <array>
+<dict>
+    <key>Processor</key>
+    <string>URLTextSearcher</string>
+    <key>Arguments</key>
+    <dict>
+        <key>url</key>
+        <string>http://audacity.sourceforge.net/download/mac</string>
+        <key>re_pattern</key>
+        <string>(?P&lt;url&gt;http.*?dmg)</string>
+    </dict>
+</dict>
         <dict>
-            <key>Processor</key>
-            <string>com.github.jessepeterson.munki.GrandPerspective/SourceForgeURLProvider</string>
-        </dict>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>filename</key>
-                <string>audacity.dmg</string>
-            </dict>
             <key>Processor</key>
             <string>URLDownloader</string>
         </dict>
