@@ -3,8 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Audacity from brew-cask.
-    </string>
+    <string>Downloads the current release version of Audacity via the project
+website. The downloads redirect to a fosshub.com download page, which
+is also searched for a download link.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.audacity</string>
     <key>Input</key>
@@ -16,17 +17,34 @@
     <string>0.2.9</string>
     <key>Process</key>
     <array>
-<dict>
-    <key>Processor</key>
-    <string>URLTextSearcher</string>
-    <key>Arguments</key>
-    <dict>
-        <key>url</key>
-        <string>http://audacity.sourceforge.net/download/mac</string>
-        <key>re_pattern</key>
-        <string>(?P&lt;url&gt;http.*?dmg)</string>
-    </dict>
-</dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://audacityteam.org</string>
+                <key>re_pattern</key>
+                <string>(?P&lt;first_url&gt;http.*?dmg)</string>
+                <key>request_headers</key>
+                <dict>
+                    <!-- A Mac User-Agent is required, otherwise we get .exe links -->
+                    <key>User-Agent</key>
+                    <string>Mozilla/5.0 (Macintosh; Intel Mac OS X)</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%first_url%</string>
+                <key>re_pattern</key>
+                <string>(?P&lt;url&gt;http.*?dmg)</string>
+            </dict>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
