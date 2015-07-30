@@ -18,7 +18,14 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>Max7DownloadURLProvider</string>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://cycling74.com/thanks-for-downloading-max/?version=max7-mac</string>
+                <key>re_pattern</key>
+                <string>(?P&lt;url_fragment&gt;//.*?dmg)</string>
+            </dict>
         </dict>
         <dict>
             <key>Processor</key>
@@ -27,6 +34,8 @@
             <dict>
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
+                <key>url</key>
+                <string>http:%url_fragment%</string>
             </dict>
         </dict>
         <dict>
