@@ -31,6 +31,8 @@ is also searched for a download link.</string>
                     <!-- A Mac User-Agent is required, otherwise we get .exe links -->
                     <key>User-Agent</key>
                     <string>Mozilla/5.0 (Macintosh; Intel Mac OS X)</string>
+                    <key>Cookie</key>
+                    <string>__utma=130145183.1424396714.1444838471.1444838471.1444841515.2; __utmb=130145183; __utmc=130145183; __utmz=130145183.1444838472.1.1.utmccn=(direct)|utmcsr=(direct)|utmcmd=(none)</string>
                 </dict>
             </dict>
         </dict>
