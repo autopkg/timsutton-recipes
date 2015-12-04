@@ -22,6 +22,11 @@
                 <string>http://opendcp.org/?page=downloads&amp;os=osx&amp;arch=64</string>
                 <key>re_pattern</key>
                 <string>(?P&lt;url&gt;http.*?dmg)</string>
+                <key>request_headers</key>
+                <dict>
+                    <key>User-Agent</key>
+                    <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36</string>
+                </dict>
             </dict>
         </dict>
         <dict>
