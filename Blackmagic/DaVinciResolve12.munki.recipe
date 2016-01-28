@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the most recent version of DaVinci Resolve 12 and imports into Munki.
+
+Please see directions in the download recipe about additional Input variables required for this
+recipe.
+
+Resolve also includes the CUDA driver installed via a postinstall script. It may or may not
+install, depending on whether a equivalent version of the CUDA driver exists already on the system.
+The postinstall script calls another script located within the application bundle to perform the
+actual installation. It can be found here within this recipe's CACHE_DIR (look for CUDA_VER):
+
+pkg_payload/Library/Application Support/Blackmagic Design/DaVinci Resolve/Prereqs/install.sh
+
+Even if the CUDA driver does install via the Resolve installer pkg, it should not require a
+restart, as it reloads its kext and support daemons in postinstall scripts. You may consider
+adding the CUDA driver as a separate item in Munki and adding it as a 'requires' for Resolve.
+
+One caveat with this package, is that this installer runs a script that evalutes
+the owner of /dev/console to derive a home directory, which then is configured system-wide
+as a cache location for Resolve. If this installer is run while a user is logged in, then
+this user's home will be used, and if run at the loginwindow, the root user's home will be.
+</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.munki.davinciresolve12</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>DaVinciResolve12</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/%NAME%</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>DaVinci Resolve 12 combines professional non-linear video editing with the world’s most advanced color corrector so now you can edit, color correct, finish and deliver all from one system! DaVinci Resolve is completely scalable and resolution independent so it can be used on set, in a small studio or integrated into the largest Hollywood production pipeline! From creative editing and multi camera television production to high end finishing and color correction, only DaVinci Resolve features the creative tools, compatibility, speed and legendary image quality you need to manage your entire workflow, which is why it is the number one solution used on Hollywood feature films.</string>
+            <key>display_name</key>
+            <string>DaVinci Resolve 12</string>
+            <key>minimum_os_version</key>
+            <string>10.10.2</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>uninstallable</key>
+            <true/>
+            <key>uninstall_method</key>
+            <string>uninstall_script</string>
+            <key>uninstall_script</key>
+            <string>#!/bin/sh
+            # Run the uninstaller script provided with the app.
+            # Alternatively, replace this with your own version of their uninstaller.
+            # For example, their uninstaller intentionally leaves the following on the
+            # system, which you may disagree with:
+            # - /Library/Application Support/Blackmagic Design/DaVinci Resolve
+            # - /Library/Preferences/Blackmagic Design/DaVinci Resolve
+            #
+            # Their uninstaller is also executable and world-writable.
+
+            UNINSTALL_SCRIPT="/Applications/DaVinci Resolve/Uninstall Resolve.app/Contents/Resources/uninstall.sh"
+
+            [ -x "${UNINSTALL_SCRIPT}" ] || exit 1
+            "${UNINSTALL_SCRIPT}"
+            </string>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.9</string>
+    <key>ParentRecipe</key>
+    <string>com.github.timsutton.download.davinciresolve12</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>archive_path</key>
+                <string>%pathname%</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/unzip</string>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pattern</key>
+                <string>%RECIPE_CACHE_DIR%/unzip/*.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>FlatPkgUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+                <key>flat_pkg_path</key>
+                <string>%found_filename%/*.pkg</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/distpkg</string>
+            </dict>
+        </dict>
+<!-- Normally below we would extract the payload and generate an installs item for the application.
+
+        ditto bails on some files within the payload: assets within a Welcome app SASS config dir:
+        Error in com.github.timsutton.munki.davinciresolve12: Processor: PkgPayloadUnpacker: Error: extraction of /Users/tsutton/Library/AutoPkg/Cache/com.github.timsutton.munki.davinciresolve12/distpkg/Manifest.pkg/Payload with ditto failed: ditto: /Users/tsutton/Library/AutoPkg/Cache/com.github.timsutton.munki.davinciresolve12/pkg_payload//Library/Application Support/Blackmagic Design/DaVinci Resolve/DaVinci Resolve Welcome.app/Contents/Resources/html/sass/config/_animations.scss: Permission denied
+
+    So instead, we inject our own installs key and substitute in the version and cross our
+    fingers that they match the actual version defined in the app's Info.plist within the package payload.
+ -->
+<!--         <dict>
+            <key>Processor</key>
+            <string>PkgPayloadUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_payload_path</key>
+                <string>%RECIPE_CACHE_DIR%/distpkg/Manifest.pkg/Payload</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/pkg_payload</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PlistReader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>info_path</key>
+                <string>%RECIPE_CACHE_DIR%/pkg_payload/Applications/DaVinci Resolve/DaVinci Resolve.app</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>faux_root</key>
+                <string>%RECIPE_CACHE_DIR%/pkg_payload</string>
+                <key>installs_item_paths</key>
+                <array>
+                    <string>/Applications/DaVinci Resolve/DaVinci Resolve.app</string>
+                </array>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiInstallsItemsCreator</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict> -->
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>installs</key>
+                    <array>
+                        <dict>
+                            <key>CFBundleIdentifier</key>
+                            <string>com.blackmagic-design.DaVinciResolve</string>
+                            <key>CFBundleName</key>
+                            <string>DaVinci Resolve</string>
+                            <key>CFBundleShortVersionString</key>
+                            <string>%version%</string>
+                            <key>path</key>
+                            <string>/Applications/DaVinci Resolve/DaVinci Resolve.app</string>
+                            <key>type</key>
+                            <string>application</string>
+                            <key>version_comparison_key</key>
+                            <string>CFBundleShortVersionString</string>
+                        </dict>
+                    </array>
+                    <key>version</key>
+                    <string>%version%</string>
+                </dict>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%found_filename%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
