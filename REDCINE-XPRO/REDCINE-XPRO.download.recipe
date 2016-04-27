@@ -3,7 +3,12 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest version of REDCINE-X PRO and imports into Munki.</string>
+    <string>Downloads the latest version of REDCINE-X PRO from the in-app Sparkle feed.
+
+The application also contains references to a Sparkle URL for beta updates:
+http://red.cachefly.net/redcinex/appcast/mac_pkg_beta.xml
+
+SPARKLE_FEED_URL could be overridden to the above if you wish to fetch beta versions.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.redcine-xpro</string>
     <key>Input</key>
@@ -11,7 +16,7 @@
         <key>NAME</key>
         <string>REDCINE-XPRO</string>
         <key>SPARKLE_FEED_URL</key>
-        <string>https://red.cachefly.net/redcinex/appcast/mac_pkg.xml</string>
+        <string>http://downloads.red.com/software/rcx/rss/mac_pkg.xml</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
