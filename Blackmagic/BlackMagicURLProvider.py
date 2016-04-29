@@ -53,10 +53,9 @@ class BlackMagicURLProvider(Processor):
         "product_name": {
             "required": True,
             "description":
-                "Product to fetch URL for. See the list of names given in "
-                "the metadata file at %s. For example, 'DaVinci Resolve "
-                "Lite', and in particular the 'relatedProductOverride' "
-                "element." % DOWNLOADS_URL,
+                "Product to fetch URL for. See the list of names "
+                "given in the metadata file at %s. For example, 'DaVinci "
+                "Resolve Lite'" % DOWNLOADS_URL
         },
         "product_name_pattern": {
             "required": True,
@@ -100,7 +99,6 @@ class BlackMagicURLProvider(Processor):
             raise ProcessorError("Could not parse downloads metadata.")
         return json_data
 
-
     def main(self):
         '''Find the download URL'''
 
@@ -109,28 +107,25 @@ class BlackMagicURLProvider(Processor):
             return cmp(LooseVersion(this), LooseVersion(that))
 
         metadata = self.get_downloads_metadata()
-        
+
         # build our own list of matching products, filtering on criteria:
         # - relatedProductOverride element must contain our 'product_name'
         #   (this name gets POSTed back to request the download URL)
         # - name element must match our 'product_name_pattern' regex
-        
+
         prods = []
         for m_prod in metadata["downloads"]:
 
-            # Current 11.1 Beta and 11.1 final are listed, both as 'Software Update'...
-            if "relatedProductOverride" in m_prod and \
-               self.env["product_name"] in m_prod["relatedProductOverride"]:
-                match = re.match(self.env["product_name_pattern"], m_prod["name"])
-                if match:
-                    if not match.group("version"):
-                        self.output("WARNING: Regex matched but no "
-                                    "named group 'version' matched!")
-                    p = m_prod.copy()
-                    # recording the version extracted by our named group in
-                    # 'product_name_pattern'
-                    p["version"] = match.group("version")
-                    prods.append(p)
+            match = re.match(self.env["product_name_pattern"], m_prod["name"])
+            if match:
+                if not match.group("version"):
+                    self.output("WARNING: Regex matched but no "
+                                "named group 'version' matched!")
+                p = m_prod.copy()
+                # recording the version extracted by our named group in
+                # 'product_name_pattern'
+                p["version"] = match.group("version")
+                prods.append(p)
         # sort by version and grab the highest one
         latest_prod = sorted(
             prods,
