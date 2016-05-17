@@ -4,12 +4,11 @@
 <dict>
     <key>Description</key>
     <string>Downloads and imports Komodo Edit into Munki. The current version
-is version 9.
+is version 10.
 
-The CFBundleVersion is used for version comparison, because historically
-with Komodo 8, only the x.y version is stored in CFBundleShortVersionString,
-whereas CFBundleVersion contains x.y.z.
-</string>
+The CFBundleVersion is used for version comparison, because since version 8, only
+the x.y version is stored in CFBundleShortVersionString, whereas CFBundleVersion
+contains x.y.z.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.munki.KomodoEdit</string>
     <key>Input</key>
@@ -46,7 +45,7 @@ whereas CFBundleVersion contains x.y.z.
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%pathname%/Komodo Edit 9.app/Contents/Info.plist</string>
+                <string>%pathname%/Komodo Edit 10.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleVersion</string>
             </dict>

@@ -3,12 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version (9) of Komodo Edit.
+    <string>Downloads the current release version (10) of Komodo Edit.
     </string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.KomodoEdit</string>
     <key>Input</key>
-    <dict/>
+    <dict>
+        <key>CHECK_FILESIZE_ONLY</key>
+        <true/>
+    </dict>
     <key>MinimumVersion</key>
     <string>0.2.9</string>
     <key>Process</key>
