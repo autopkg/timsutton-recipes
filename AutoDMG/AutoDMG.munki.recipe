@@ -21,6 +21,8 @@
             </array>
             <key>description</key>
             <string>Create deployable system images from OS X installer.</string>
+            <key>display_name</key>
+            <string>%NAME%</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>
