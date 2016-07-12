@@ -22,8 +22,8 @@
             <dict>
                 <key>github_repo</key>
                 <string>processing/p5.js-editor</string>
-                <key>re_pattern</key>
-                <string>(?P&lt;url&gt;http.*?p5-mac.zip)</string>
+                <key>asset_regex</key>
+                <string>p5-mac.zip</string>
             </dict>
         </dict>
         <dict>
