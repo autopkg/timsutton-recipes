@@ -15,7 +15,7 @@ and they must contain data.</string>
         <!-- Leaving extra wildcard after the 'version' capture group, since
         the 'name' JSON key began including ' Update' after version 12.0.1 -->
         <key>PRODUCT_NAME_PATTERN</key>
-        <string>^DaVinci Resolve (?P&lt;version&gt;12{1}(\.\d+)*).*$</string>
+        <string>^DaVinci Resolve (?P&lt;version&gt;12{1}(\.\d+)*)$</string>
         <key>NAME</key>
         <string>DaVinciResolve12</string>
         <key>REG_FIRSTNAME</key>
