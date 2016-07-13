@@ -27,7 +27,7 @@ from autopkglib import Processor, ProcessorError
 
 __all__ = ["BlackMagicURLProvider"]
 
-DOWNLOADS_URL = "http://www.blackmagicdesign.com/api/support/us/downloads.json"
+DOWNLOADS_URL = "https://www.blackmagicdesign.com/api/support/us/downloads.json"
 REQUIRED_REG_KEYS = [
     "firstname",
     "lastname",
