@@ -38,13 +38,18 @@ Note: the Audacity.app code object is not signed at all.</string>
                 <key>url</key>
                 <string>%first_url%</string>
                 <key>re_pattern</key>
+                <string>data="(?P&lt;data&gt;.*?dmg)"</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://www.fosshub.com/genLink/%data%</string>
+                <key>re_pattern</key>
                 <string>(?P&lt;url&gt;http.*?dmg)</string>
-                <key>request_headers</key>
-                <dict>
-                    <!-- A Mac User-Agent seems to be required -->
-                    <key>User-Agent</key>
-                    <string>Mozilla/5.0 (Macintosh; Intel Mac OS X)</string>
-                </dict>
             </dict>
         </dict>
         <dict>
