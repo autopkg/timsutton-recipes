@@ -47,7 +47,7 @@ Note: the Audacity.app code object is not signed at all.</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://www.fosshub.com/genLink/%data%</string>
+                <string>http://www.fosshub.com/gensLink/%data%</string>
                 <key>re_pattern</key>
                 <string>(?P&lt;url&gt;http.*?dmg)</string>
             </dict>
