@@ -113,6 +113,8 @@ class BlackMagicURLProvider(Processor):
         #   (this name gets POSTed back to request the download URL)
         # - name element must match our 'product_name_pattern' regex
 
+        self.output("Filtering json 'name' attributes with regex %s" %
+                        self.env["product_name_pattern"])
         prods = []
         for m_prod in metadata["downloads"]:
 

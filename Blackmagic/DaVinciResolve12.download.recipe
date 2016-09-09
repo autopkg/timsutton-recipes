@@ -12,10 +12,10 @@ and they must contain data.</string>
     <string>com.github.timsutton.download.davinciresolve12</string>
     <key>Input</key>
     <dict>
-        <!-- Leaving extra wildcard after the 'version' capture group, since
-        the 'name' JSON key began including ' Update' after version 12.0.1 -->
+        <!-- Version 12 updates _may_ contain 'Update' in the title, but
+        we also want to avoid capturing the 'Studio Update' versions -->
         <key>PRODUCT_NAME_PATTERN</key>
-        <string>^DaVinci Resolve (?P&lt;version&gt;12{1}(\.\d+)*)$</string>
+        <string>^DaVinci Resolve (?P&lt;version&gt;12(\.\d+)*)( Update)*$</string>
         <key>NAME</key>
         <string>DaVinciResolve12</string>
         <key>REG_FIRSTNAME</key>
