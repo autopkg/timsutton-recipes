@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>EAnalysis</string>
         <key>SPARKLE_FEED_URL</key>
-        <string>http://logiciels.pierrecouprie.fr/telechargement/EANALYSIS/eanalysis.xml</string>
+        <string>https://logiciels.pierrecouprie.fr/telechargement/EANALYSIS/eanalysis.xml</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.3.0</string>
