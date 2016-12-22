@@ -13,7 +13,7 @@ and they must contain data.</string>
     <key>Input</key>
     <dict>
         <key>PRODUCT_NAME_PATTERN</key>
-        <string>^Fusion (?P&lt;version&gt;8.*)$</string>
+        <string>^Fusion (?P&lt;version&gt;8(\.\d+)*)( Update)*$</string>
         <key>NAME</key>
         <string>Fusion8</string>
         <key>REG_FIRSTNAME</key>
