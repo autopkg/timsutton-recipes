@@ -3,7 +3,10 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads latest version of Hopper Disassembler 4 and imports into a Munki repo.</string>
+    <string>Downloads latest version of Hopper Disassembler 4 and imports into a Munki repo.
+
+Please see the Description for HopperDisassembler4.download for a description
+of a current issue preventing the downloading of the full version.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.munki.HopperDisassembler4</string>
     <key>Input</key>
