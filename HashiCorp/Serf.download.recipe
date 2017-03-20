@@ -19,13 +19,13 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>URLTextSearcher</string>
+            <string>HashiCorpURLProvider</string>
             <key>Arguments</key>
             <dict>
-                <key>url</key>
-                <string>https://serfdom.io/downloads.html</string>
-                <key>re_pattern</key>
-                <string>(?P&lt;url&gt;http.*?(?P&lt;version&gt;[0-9]+\.[0-9]+\.[0-9])_darwin_amd64.zip)</string>
+                <key>arch</key>
+                <string>amd64</string>
+                <key>project_name</key>
+                <string>%PRODUCT%</string>
             </dict>
         </dict>
 		<dict>

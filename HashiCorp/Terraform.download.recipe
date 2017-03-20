@@ -19,22 +19,13 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>HashiCorpCheckpointDataProvider</string>
+            <string>HashiCorpURLProvider</string>
             <key>Arguments</key>
             <dict>
-                <key>product</key>
+                <key>arch</key>
+                <string>amd64</string>
+                <key>project_name</key>
                 <string>%PRODUCT%</string>
-            </dict>            
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLTextSearcher</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>%hashicorp_product_download_page%</string>
-                <key>re_pattern</key>
-                <string>(?P&lt;url&gt;http.*?darwin_amd64.zip)</string>
             </dict>
         </dict>
 		<dict>
