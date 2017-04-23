@@ -22,14 +22,9 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://komodoide.com/download/edit-osx/</string>
+                <string>https://www.activestate.com/komodo-ide/downloads/edit</string>
                 <key>re_pattern</key>
                 <string>(?P&lt;url&gt;http://.*?Komodo-Edit.*?dmg)</string>
-                <key>request_headers</key>
-                <dict>
-                    <key>User-Agent</key>
-                    <string>curl/7.37.1</string>
-                </dict>
             </dict>
         </dict>
         <dict>
