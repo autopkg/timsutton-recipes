@@ -62,7 +62,7 @@ the pkginfo version with this so that our latest is always the highest.
             <key>Arguments</key>
             <dict>
                 <key>pkgroot</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/root/Applications</string>
+                <string>%RECIPE_CACHE_DIR%/unpack/root/Applications/REDCINE-X Professional</string>
                 <key>pkgdirs</key>
                 <dict/>
             </dict>
@@ -75,7 +75,7 @@ the pkginfo version with this so that our latest is always the highest.
                 <key>pkg_payload_path</key>
                 <string>%RECIPE_CACHE_DIR%/unpack/REDCINE-X_PRO.pkg/Payload</string>
                 <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/root/Applications</string>
+                <string>%RECIPE_CACHE_DIR%/unpack/root/Applications/REDCINE-X Professional</string>
             </dict>
             <key>Processor</key>
             <string>PkgPayloadUnpacker</string>
@@ -85,7 +85,8 @@ the pkginfo version with this so that our latest is always the highest.
             <dict>
                 <key>installs_item_paths</key>
                 <array>
-                    <string>/Applications/REDCINE-X PRO.app</string>
+                    <string>/Applications/REDCINE-X Professional/REDCINE-X PRO.app</string>
+                    <string>/Applications/REDCINE-X Professional/RED PLAYER.app</string>
                 </array>
                 <key>faux_root</key>
                 <string>%RECIPE_CACHE_DIR%/unpack/root</string>
@@ -103,7 +104,7 @@ the pkginfo version with this so that our latest is always the highest.
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/root/Applications/REDCINE-X PRO.app/Contents/Info.plist</string>
+                <string>%RECIPE_CACHE_DIR%/unpack/root/Applications/REDCINE-X Professional/REDCINE-X PRO.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleVersion</string>
             </dict>
