@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the most recent version of Ableton Live 9.
+Supports two additional variables to get different editions and builds:
+
+ARCH: either '64' or '32'
+EDITION: one of 'intro', 'standard', and 'suite'.</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.download.AbletonLive9</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>AbletonLive9</string>
+        <key>ARCH</key>
+        <string>64</string>
+        <key>EDITION</key>
+        <string>standard</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://www.ableton.com/en/help/article/latest-live-version/</string>
+                <key>re_pattern</key>
+                <string>Latest Live version: Live (?P&lt;version&gt;9(\.\d)+)</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://cdn2-downloads.ableton.com/channels/%version%/ableton_live_%EDITION%_%version%_%ARCH%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
