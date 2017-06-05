@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the most recent version of Glyphs 2.
+
+This may sometimes include beta releases, a limitation which is
+due to an unconventional way in which they manage the feed as a means
+to make pre-releases available. The logic is that if there are two
+items in the feed, the 2nd will be the beta (!). Because this version
+will always compare higher, it means that it is possible that any
+new download is actually a beta version. Presumably one of these
+eventually becomes a final release, but because of this ambiguity,
+it is recommended to actually verify the build number against what
+can be downloaded from the download link at:
+http://updates.glyphsapp.com/latest2.php.</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.download.Glyphs2</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Glyphs2</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>SparkleUpdateInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>appcast_url</key>
+                <string>https://glyphsapp.com/updates/appcast2.xml</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
