@@ -7,7 +7,12 @@
 
 This product requires registration in order to download, so
 you _must_ override all input variables beginning with 'REG_'
-and they must contain data.</string>
+and they must contain data.
+
+Notably, REG_STATE and REG_COUNTRY must contain sane values:
+- REG_COUNTRY is of the form 'us', 'ca', etc.
+- REG_STATE is a proper name, i.e. 'Maryland'.
+</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.fusion8</string>
     <key>Input</key>
@@ -27,6 +32,8 @@ and they must contain data.</string>
         <key>REG_CITY</key>
         <string></string>
         <key>REG_STATE</key>
+        <string></string>
+        <key>REG_COUNTRY</key>
         <string></string>
     </dict>
     <key>MinimumVersion</key>
@@ -56,6 +63,8 @@ and they must contain data.</string>
                     <string>%REG_CITY%</string>
                     <key>state</key>
                     <string>%REG_STATE%</string>
+                    <key>country</key>
+                    <string>%REG_COUNTRY%</string>
                 </dict>
             </dict>
         </dict>

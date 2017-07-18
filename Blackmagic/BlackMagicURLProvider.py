@@ -34,7 +34,9 @@ REQUIRED_REG_KEYS = [
     "email",
     "phone",
     "city",
-    "state"]
+    "state",
+    "country",
+]
 
 class BlackMagicURLProvider(Processor):
     """Provides a version and dmg download for the Barebones product given."""
