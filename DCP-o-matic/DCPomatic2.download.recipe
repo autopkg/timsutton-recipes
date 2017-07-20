@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest DCP-o-matic from the official DCP-o-matic
+website.
+
+By default this recipe will download the stable, "main" DCP-o-matic app,
+but the download can be changed to one of the other options by changing APP
+to any of the following:
+Batch Converter, DCP-o-matic, Encode Server, KDM Creator
+
+If you wish to download multiple products then one can make multiple
+overrides from this one recipe.
+
+CHANNEL can be either 'stable' or 'test'
+</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.download.DCPomatic2</string>
+    <key>Input</key>
+    <dict>
+        <key>APP</key>
+        <string>DCP-o-matic</string>
+        <key>CHANNEL</key>
+        <string>stable</string>
+        <key>NAME</key>
+        <string>DCPomatic2</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>DCPomaticDownloadInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>app</key>
+                <string>%APP%</string>
+                <key>channel</key>
+                <string>%CHANNEL%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%dcp_download_url%</string>
+                <key>re_pattern</key>
+                <string>%dcp_download_regex%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://dcpomatic.com/%match%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
