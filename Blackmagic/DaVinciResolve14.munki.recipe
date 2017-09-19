@@ -71,7 +71,7 @@ this user's home will be used, and if run at the loginwindow, the root user's ho
     <key>MinimumVersion</key>
     <string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.timsutton.download.davinciresolve12</string>
+    <string>com.github.timsutton.download.davinciresolve14</string>
     <key>Process</key>
     <array>
         <dict>
@@ -110,7 +110,7 @@ this user's home will be used, and if run at the loginwindow, the root user's ho
 <!-- Normally below we would extract the payload and generate an installs item for the application.
 
         ditto bails on some files within the payload: assets within a Welcome app SASS config dir:
-        Error in com.github.timsutton.munki.davinciresolve12: Processor: PkgPayloadUnpacker: Error: extraction of /Users/tsutton/Library/AutoPkg/Cache/com.github.timsutton.munki.davinciresolve12/distpkg/Manifest.pkg/Payload with ditto failed: ditto: /Users/tsutton/Library/AutoPkg/Cache/com.github.timsutton.munki.davinciresolve12/pkg_payload//Library/Application Support/Blackmagic Design/DaVinci Resolve/DaVinci Resolve Welcome.app/Contents/Resources/html/sass/config/_animations.scss: Permission denied
+        Error in com.github.timsutton.munki.davinciresolve14: Processor: PkgPayloadUnpacker: Error: extraction of /Users/tsutton/Library/AutoPkg/Cache/com.github.timsutton.munki.davinciresolve14/distpkg/Manifest.pkg/Payload with ditto failed: ditto: /Users/tsutton/Library/AutoPkg/Cache/com.github.timsutton.munki.davinciresolve14/pkg_payload//Library/Application Support/Blackmagic Design/DaVinci Resolve/DaVinci Resolve Welcome.app/Contents/Resources/html/sass/config/_animations.scss: Permission denied
 
     So instead, we inject our own installs key and substitute in the version and cross our
     fingers that they match the actual version defined in the app's Info.plist within the package payload.
