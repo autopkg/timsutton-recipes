@@ -14,15 +14,15 @@ Notably, REG_STATE and REG_COUNTRY must contain sane values:
 - REG_STATE is a proper name, i.e. 'Maryland'.
 </string>
     <key>Identifier</key>
-    <string>com.github.timsutton.download.davinciresolve12</string>
+    <string>com.github.timsutton.download.davinciresolve14</string>
     <key>Input</key>
     <dict>
-        <!-- Version 12 updates _may_ contain 'Update' in the title, but
+        <!-- Version 14 updates _may_ contain 'Update' in the title, but
         we also want to avoid capturing the 'Studio Update' versions -->
         <key>PRODUCT_NAME_PATTERN</key>
         <string>^DaVinci Resolve (?P&lt;version&gt;14(\.\d+)*)( Update)*$</string>
         <key>NAME</key>
-        <string>DaVinciResolve12</string>
+        <string>DaVinciResolve14</string>
         <key>REG_FIRSTNAME</key>
         <string></string>
         <key>REG_LASTNAME</key>
