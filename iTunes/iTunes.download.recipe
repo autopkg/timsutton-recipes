@@ -19,14 +19,19 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>https://swdlp.apple.com/iframes/82/en_us/82_en_us.html</string>
+                <string>https://www.apple.com/itunes/download/</string>
                 <key>re_pattern</key>
-                <string>'(?P&lt;url&gt;https://secure.*?dmg)'</string>
+                <string>https://secure.*?dmg</string>
             </dict>
         </dict>
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%match%</string>
+            </dict>
         </dict>
         <dict>
             <key>Processor</key>
