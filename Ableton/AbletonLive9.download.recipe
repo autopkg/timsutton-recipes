@@ -51,15 +51,15 @@ APP_EDITION: one of 'Intro', 'Standard', and 'Suite'.</string>
             <string>EndOfCheckPhase</string>
         </dict>
         <dict>
-        	<key>Processor</key>
-        	<string>CodeSignatureVerifier</string>
-        	<key>Arguments</key>
-        	<dict>
-        		<key>input_path</key>
-        		<string>%pathname%/Ableton Live 9 %APP_EDITION%.app</string>
-        		<key>requirement</key>
-        		<string>identifier "com.ableton.live" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = MWR434WD94</string>
-        	</dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/Ableton Live 9 %APP_EDITION%.app</string>
+                <key>requirement</key>
+                <string>identifier "com.ableton.live" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = MWR434WD94</string>
+            </dict>
         </dict>
     </array>
 </dict>
