@@ -7,7 +7,8 @@
 Supports two additional variables to get different editions and builds:
 
 ARCH: either '64' or '32'
-EDITION: one of 'intro', 'standard', and 'suite'.</string>
+EDITION: one of 'intro', 'standard', and 'suite'
+APP_EDITION: one of 'Intro', 'Standard', and 'Suite'.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.AbletonLive9</string>
     <key>Input</key>
@@ -18,6 +19,8 @@ EDITION: one of 'intro', 'standard', and 'suite'.</string>
         <string>64</string>
         <key>EDITION</key>
         <string>standard</string>
+        <key>APP_EDITION</key>
+        <string>Standard</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.3.0</string>
@@ -29,9 +32,9 @@ EDITION: one of 'intro', 'standard', and 'suite'.</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>https://www.ableton.com/en/help/article/latest-live-version/</string>
+                <string>https://www.ableton.com/en/release-notes/live-9/</string>
                 <key>re_pattern</key>
-                <string>Latest Live version: Live (?P&lt;version&gt;9(\.\d)+)</string>
+                <string>(?P&lt;version&gt;9\.[\d\.]+)\s+Release\sNotes</string>
             </dict>
         </dict>
         <dict>
@@ -40,12 +43,23 @@ EDITION: one of 'intro', 'standard', and 'suite'.</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://cdn2-downloads.ableton.com/channels/%version%/ableton_live_%EDITION%_%version%_%ARCH%.dmg</string>
+                <string>https://cdn2-downloads.ableton.com/channels/%version%/ableton_live_%EDITION%_%version%_%ARCH%.dmg</string>
             </dict>
         </dict>
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/Ableton Live 9 %APP_EDITION%.app</string>
+                <key>requirement</key>
+                <string>identifier "com.ableton.live" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = MWR434WD94</string>
+            </dict>
         </dict>
     </array>
 </dict>
