@@ -3,23 +3,17 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Imports a manually-download copy of Audacity into Munki.
-
-This recipe originally provided an automated download of Audacity
-from fosshub.com, using a download parent recipe. Scripted scraping
-of fosshub.com is against their terms of service, and so this recipe
-requires a manual download of the .dmg and for it to be passed
-manually using the `--pkg` argument to `autopkg run`.
-
-Note: the Audacity.app code object is not signed at all.</string>
+    <string>Downloads the most recent version of Sonic Visualiser and
+imports into Munki. Requires the autopkg/hansen-m-recipes repo.
+</string>
     <key>Identifier</key>
-    <string>com.github.timsutton.munki.audacity</string>
+    <string>com.github.timsutton.munki.SonicVisualiser</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Audacity</string>
+        <string>SonicVisualiser</string>
         <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/Audacity</string>
+        <string>apps/%NAME%</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -27,9 +21,9 @@ Note: the Audacity.app code object is not signed at all.</string>
                 <string>testing</string>
             </array>
             <key>description</key>
-            <string>Audacity is a free, easy-to-use, multi-track audio editor and recorder for Windows, Mac OS X, GNU/Linux and other operating systems.</string>
-            <key>display_name</key>
-            <string>Audacity</string>
+            <string>Sonic Visualiser is an application for viewing and analysing the contents of music audio files.</string>
+            <key>minimum_os_version</key>
+            <string>10.7</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>
@@ -37,18 +31,16 @@ Note: the Audacity.app code object is not signed at all.</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.5.1</string>
+    <string>0.2.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.hansen-m.download.SonicVisualiser</string>
     <key>Process</key>
     <array>
-        <dict>
-            <key>Processor</key>
-            <string>PackageRequired</string>
-        </dict>
         <dict>
             <key>Arguments</key>
             <dict>
                 <key>pkg_path</key>
-                <string>%PKG%</string>
+                <string>%pathname%</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>

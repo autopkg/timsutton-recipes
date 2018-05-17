@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the most recent version of Ableton Live 9
+Standard, and imports it into a Munki repo.
+
+See the download recipe for a description of additional Input options.
+
+The Munki postinstall script used here should perform all the post-install
+tasks used by Ableton Live 9 Standard. Note that this script doesn't
+seem to be compatible with the Suite edition.
+</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.munki.AbletonLive9Standard</string>
+    <key>Input</key>
+    <dict>
+        <key>EDITION</key>
+        <string>standard</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/%NAME%</string>
+        <key>NAME</key>
+        <string>AbletonLive9Standard</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>Live is software for creating musical ideas, turning them into finished songs, and even taking them onto the stage.
+
+With two views - the classic Arrangement View, where musical ideas are laid out along a timeline, and the unique Session View, where you can improvise and quickly experiment with musical ideas - Live is a fast, fun, intuitive way to make music.
+</string>
+            <key>display_name</key>
+            <string>Ableton Live 9 Standard</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>postinstall_script</key>
+            <string>#!/bin/sh
+
+# Perform all "post-install" tasks which require administrative rights on first launch
+# - additional options for configuration are documented by Ableton here:
+#   https://help.ableton.com/hc/en-us/articles/209073209-Centralized-administration-of-Live-in-a-multi-user-environment-without-Sassafras-
+
+LIVE_RES_DIR="/Applications/Ableton Live 9 Standard.app/Contents/Resources"
+SYSTEM_PROPELLERHEAD_DIR="/Library/Application Support/Propellerhead Software"
+
+for req_dir in "${SYSTEM_PROPELLERHEAD_DIR}" "${SYSTEM_PROPELLERHEAD_DIR}/ReWire" "${SYSTEM_PROPELLERHEAD_DIR}/Rex"; do
+    if [ ! -d "${req_dir}" ]; then
+        mkdir "${req_dir}"
+    fi
+done
+
+# ReWire
+cp -R "${LIVE_RES_DIR}/ReWire-Mach-O/ReWire.bundle" "${SYSTEM_PROPELLERHEAD_DIR}/ReWire"
+# Yes, this has to be an alias. Ableton at least does the alias creation via their own CLI tool.
+"${LIVE_RES_DIR}/MakeAlias" "${LIVE_RES_DIR}/Ableton Live Engine.bundle" "${SYSTEM_PROPELLERHEAD_DIR}/ReWire" "Ableton Live Engine_32"
+
+# Rex
+cp -R "${LIVE_RES_DIR}/REX-Mach-O/REX Shared Library.bundle" "${SYSTEM_PROPELLERHEAD_DIR}/Rex"
+</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.timsutton.download.AbletonLive9</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>version</key>
+                    <string>%version%</string>
+                </dict>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>

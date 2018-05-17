@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest DCP-o-matic from the official DCP-o-matic
+website, and imports it into Munki.
+
+By default this recipe will download the stable, "main" DCP-o-matic app,
+but the download can be changed to one of the other options by changing APP
+to any of the following:
+Batch Converter, DCP-o-matic, Encode Server, KDM Creator
+
+If you wish to download multiple products then one can make multiple
+overrides from this one recipe. One would then typically modify
+NAME and pkginfo keys appropriately.
+
+CHANNEL can be either 'stable' or 'test'
+</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.munki.DCPomatic2</string>
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/%NAME%</string>
+        <key>NAME</key>
+        <string>DCPomatic2</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>DCP-o-matic is a free, open-source program to create Digital Cinema Packages (DCPs) from videos, images, sound and subtitle files. You can use it to make content for playback on DCI-compliant cinema projectors.
+
+It can take files in many different formats, including MP4, Apple ProRes, MOV, AVI, M2TS (from Blu-Ray), VOB (from DVD), WMV, MKV, JPEG, PNG, TIFF and lots of others.
+
+It will run on Windows, Mac OS X and Linux and is in use in 54 countries around the world.</string>
+            <key>developer</key>
+            <string>Carl Hetherington</string>
+            <key>display_name</key>
+            <string>DCP-o-matic</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.timsutton.download.DCPomatic2</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>

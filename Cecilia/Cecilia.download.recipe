@@ -19,7 +19,7 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://ajaxsoundstudio.com/software/cecilia</string>
+                <string>http://ajaxsoundstudio.com/software/cecilia/</string>
                 <key>re_pattern</key>
                 <string>(?P&lt;url&gt;http.*?dmg)</string>
             </dict>

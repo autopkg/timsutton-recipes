@@ -34,7 +34,9 @@ REQUIRED_REG_KEYS = [
     "email",
     "phone",
     "city",
-    "state"]
+    "state",
+    "country",
+]
 
 class BlackMagicURLProvider(Processor):
     """Provides a version and dmg download for the Barebones product given."""
@@ -172,7 +174,7 @@ class BlackMagicURLProvider(Processor):
 
         request = urllib2.Request(url, req_data)
         request.add_header("Content-Type", "application/json;charset=UTF-8")
-
+        request.add_header("User-Agent", "Mozilla/5.0")
         try:
             result = urllib2.urlopen(request)
             download_url = result.read()
