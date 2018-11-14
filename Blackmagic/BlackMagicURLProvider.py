@@ -144,8 +144,20 @@ class BlackMagicURLProvider(Processor):
             raise ProcessorError("Metadata for product is missing at the "
                                  "expected location in feed.")
 
-        # if this download needs registration, ensure we've set everything
-        if latest_prod["requiresRegistration"]:
+
+        # now build a request JSON to finally ask for the download URL
+        req_data = {
+            "country": "us",
+            "platform": "Mac OS X",
+            "product": {
+                "name": self.env["product_name"]
+            }
+        }
+
+        # if this download needs registration, or we want to register
+        # otherwise, ensure we've set everything
+        if latest_prod["requiresRegistration"] or \
+                self.env.get("registration_info"):
             errormsg = ("This product requires registration. Please set all "
                         "registration information in this processor using "
                         "the 'registration_info' input variable.")
@@ -156,17 +168,9 @@ class BlackMagicURLProvider(Processor):
                     if key not in self.env["registration_info"] or \
                        not self.env["registration_info"][key]:
                         raise ProcessorError(errormsg)
-
-        # now build a request JSON to finally ask for the download URL
-        req_data = {
-            "country": "us",
-            "platform": "Mac OS X",
-            "product": {
-                "name": self.env["product_name"]
-            }
-        }
-        for k in self.env["registration_info"]:
-            req_data[k] = self.env["registration_info"][k]
+            # then add the registration info to req_data
+            for k in self.env["registration_info"]:
+                req_data[k] = self.env["registration_info"][k]
         req_data = json.dumps(req_data)
 
         url = "https://www.blackmagicdesign.com/api/register/us/download/"
