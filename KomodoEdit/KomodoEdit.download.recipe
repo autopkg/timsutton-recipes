@@ -24,7 +24,7 @@
                 <key>url</key>
                 <string>https://www.activestate.com/komodo-ide/downloads/edit</string>
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;http://.*?Komodo-Edit.*?dmg)</string>
+                <string>(?P&lt;url&gt;https?://.*?Komodo-Edit.*?dmg)</string>
             </dict>
         </dict>
         <dict>
