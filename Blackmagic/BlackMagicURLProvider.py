@@ -16,13 +16,12 @@
 """See docstring for BlackMagicURLProvider class"""
 
 from __future__ import absolute_import
+
 import json
 import re
 import urllib2
-
-from distutils.version import LooseVersion, StrictVersion
+from distutils.version import LooseVersion
 from operator import itemgetter
-from pprint import pprint
 
 from autopkglib import Processor, ProcessorError
 

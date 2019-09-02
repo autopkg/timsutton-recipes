@@ -15,13 +15,13 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-import subprocess
+
 import json
 import re
+import subprocess
 from distutils.version import LooseVersion
 
 from autopkglib import Processor, ProcessorError
-
 
 __all__ = ["HashiCorpURLProvider"]
 
