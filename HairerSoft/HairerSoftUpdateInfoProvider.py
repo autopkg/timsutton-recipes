@@ -53,7 +53,7 @@ class HairerSoftUpdateInfoProvider(Processor):
             urlfd = urlopen(url)
             plist_data = urlfd.read()
             urlfd.close()
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Could not download HairerSoft metadata plist, error: %s" % e)
 
         httpcode = urlfd.getcode()
@@ -63,7 +63,7 @@ class HairerSoftUpdateInfoProvider(Processor):
 
         try:
             plist = plistlib.readPlistFromString(plist_data)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Error parsing metadata plist! Error: %s" % e)
 
         return plist
