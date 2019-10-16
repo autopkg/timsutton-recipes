@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest version of EAnalysis imports into Munki.</string>
+    <string>Downloads the latest version of EAnalysis.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.EAnalysis</string>
     <key>Input</key>

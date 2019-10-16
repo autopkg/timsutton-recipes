@@ -14,10 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import absolute_import
+
 import plistlib
-import urllib2
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["HairerSoftUpdateInfoProvider"]
 
@@ -44,10 +50,10 @@ class HairerSoftUpdateInfoProvider(Processor):
     def get_meta_plist(self, product_name):
         url = BASE_URL + product_name + ".plist"
         try:
-            urlfd = urllib2.urlopen(url)
+            urlfd = urlopen(url)
             plist_data = urlfd.read()
             urlfd.close()
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Could not download HairerSoft metadata plist, error: %s" % e)
 
         httpcode = urlfd.getcode()
@@ -57,7 +63,7 @@ class HairerSoftUpdateInfoProvider(Processor):
 
         try:
             plist = plistlib.readPlistFromString(plist_data)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Error parsing metadata plist! Error: %s" % e)
 
         return plist

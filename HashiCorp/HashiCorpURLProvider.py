@@ -14,13 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import subprocess
+from __future__ import absolute_import
+
 import json
 import re
+import subprocess
 from distutils.version import LooseVersion
 
 from autopkglib import Processor, ProcessorError
-
 
 __all__ = ["HashiCorpURLProvider"]
 
@@ -99,7 +100,7 @@ class HashiCorpURLProvider(Processor):
         """Find and return a download URL"""
         # Download a JSON with all releases
         releases = self.download_releases_info(base_url)
-        #print json.dumps(releases, sort_keys=True, indent=4, separators=(',', ': '))
+        # print(json.dumps(releases, sort_keys=True, indent=4, separators=(',', ': ')))
 
         # Sort versions with LooseVersion and get a dictionary for the latest version
         versions = releases.get('versions', None)
@@ -107,7 +108,7 @@ class HashiCorpURLProvider(Processor):
         release_numbers = [ v for v in version_numbers if RELEASE_RE.match(v) ]
         release_numbers.sort(key=LooseVersion, reverse=True)
         latest_version = versions[release_numbers[0]]
-        #print json.dumps(latest_version, sort_keys=True, indent=4, separators=(',', ': '))
+        # print(json.dumps(latest_version, sort_keys=True, indent=4, separators=(',', ': ')))
 
         # Set the version variable
         self.env["version"] = latest_version.get('version', None)

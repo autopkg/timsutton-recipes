@@ -15,13 +15,13 @@
 # limitations under the License.
 """See docstring for BlackMagicURLProvider class"""
 
+from __future__ import absolute_import
+
 import json
 import re
 import urllib2
-
-from distutils.version import LooseVersion, StrictVersion
+from distutils.version import LooseVersion
 from operator import itemgetter
-from pprint import pprint
 
 from autopkglib import Processor, ProcessorError
 
@@ -97,7 +97,7 @@ class BlackMagicURLProvider(Processor):
         try:
             metadata = urllib2.urlopen(DOWNLOADS_URL).read()
             json_data = json.loads(metadata)
-        except urllib2.HTTPError, ValueError:
+        except urllib2.HTTPError as ValueError:
             raise ProcessorError("Could not parse downloads metadata.")
         return json_data
 
