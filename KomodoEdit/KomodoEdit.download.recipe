@@ -22,9 +22,9 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>https://www.activestate.com/komodo-ide/downloads/edit</string>
+                <string>https://www.activestate.com/products/komodo-ide/downloads/edit/</string>
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;http://.*?Komodo-Edit.*?dmg)</string>
+                <string>(?P&lt;url&gt;https://[\S]+Komodo-Edit[\S]+\.dmg)</string>
             </dict>
         </dict>
         <dict>
@@ -41,7 +41,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_path</key>
-                <string>%pathname%/Komodo Edit 11.app</string>
+                <string>%pathname%/Komodo Edit 12.app</string>
                 <key>requirement</key>
                 <string>identifier "com.activestate.KomodoEdit" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6L3MMJ36R9"</string>
             </dict>
