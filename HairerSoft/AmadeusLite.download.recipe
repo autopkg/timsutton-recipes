@@ -13,7 +13,7 @@
         <string>AmadeusLite</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.0</string>
+    <string>2.0</string>
     <key>Process</key>
     <array>
         <dict>
