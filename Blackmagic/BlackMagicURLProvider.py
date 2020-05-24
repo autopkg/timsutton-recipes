@@ -152,8 +152,7 @@ class BlackMagicURLProvider(URLGetter):
 
         # if this download needs registration, or we want to register
         # otherwise, ensure we've set everything
-        if latest_prod["requiresRegistration"] or \
-                self.env.get("registration_info"):
+        if latest_prod["requiresRegistration"]:
             errormsg = ("This product requires registration. Please set all "
                         "registration information in this processor using "
                         "the 'registration_info' input variable.")
