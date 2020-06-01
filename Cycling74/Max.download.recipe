@@ -3,14 +3,17 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release of Max 7 from the Cycling '74 website.
-    </string>
+    <string>Downloads the current release of Max from the Cycling '74 website.
+
+Set MAJOR_VERSION as needed.</string>
     <key>Identifier</key>
-    <string>com.github.timsutton.download.Max7</string>
+    <string>com.github.timsutton.download.Max</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Max7</string>
+        <string>Max</string>
+        <key>MAJOR_VERSION</key>
+        <string>8</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.4.1</string>
@@ -24,7 +27,7 @@
                 <key>url</key>
                 <string>https://cycling74.com/thanks-for-downloading-max/?os=mac</string>
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;https://\w*-maxmspjitter.s3.amazonaws.com.*?dmg)</string>
+                <string>(?P&lt;url&gt;https://\w*-maxmspjitter.s3.amazonaws.com/Max%MAJOR_VERSION%\S.*.dmg)</string>
             </dict>
         </dict>
         <dict>
