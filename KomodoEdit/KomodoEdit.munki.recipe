@@ -3,8 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads and imports Komodo Edit into Munki. The current version
-is version 11.
+    <string>Downloads and imports Komodo Edit into Munki.
 
 The CFBundleVersion is used for version comparison, because since version 8, only
 the x.y version is stored in CFBundleShortVersionString, whereas CFBundleVersion
@@ -45,7 +44,7 @@ contains x.y.z.</string>
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%pathname%/Komodo Edit 11.app/Contents/Info.plist</string>
+                <string>%pathname%/Komodo Edit 12.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleVersion</string>
             </dict>
