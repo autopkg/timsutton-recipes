@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version (11) of Komodo Edit.
+    <string>Downloads the current release version of Komodo Edit.
     </string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.KomodoEdit</string>
@@ -11,6 +11,8 @@
     <dict>
         <key>CHECK_FILESIZE_ONLY</key>
         <true/>
+        <key>USER_AGENT</key>
+        <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.3.1</string>
@@ -21,6 +23,11 @@
             <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
+                <key>request_headers</key>
+                <dict>
+                    <key>user-agent</key>
+                    <string>%USER_AGENT%</string>
+                </dict>
                 <key>url</key>
                 <string>https://www.activestate.com/products/komodo-ide/downloads/edit/</string>
                 <key>re_pattern</key>
