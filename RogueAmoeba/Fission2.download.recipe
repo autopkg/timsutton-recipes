@@ -29,7 +29,7 @@ later revisions will require a higher OS, so this may be overridden.
             <key>Arguments</key>
             <dict>
                 <key>alternate_xmlns_url</key>
-                <string>http://rogueamoeba.com/public/rss/sparkle/</string>
+                <string>https://rogueamoeba.com/public/rss/sparkle/</string>
                 <key>appcast_url</key>
                 <string>https://rogueamoeba.net/ping/versionCheck.cgi</string>
                 <key>appcast_query_pairs</key>
