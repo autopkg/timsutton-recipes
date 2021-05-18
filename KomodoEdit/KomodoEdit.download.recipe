@@ -3,14 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Komodo Edit.
-    </string>
+    <string>Downloads the current release version of Komodo Edit.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.KomodoEdit</string>
     <key>Input</key>
     <dict>
         <key>CHECK_FILESIZE_ONLY</key>
         <true/>
+        <key>MAJOR_VERSION</key>
+        <string>12</string>
         <key>USER_AGENT</key>
         <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15</string>
     </dict>
@@ -31,7 +32,7 @@
                 <key>url</key>
                 <string>https://www.activestate.com/products/komodo-ide/downloads/edit/</string>
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;https://[\S]+Komodo-Edit[\S]+\.dmg)</string>
+                <string>(?P&lt;url&gt;https://[\S]+Komodo-Edit-%MAJOR_VERSION%[\S]+\.dmg)</string>
             </dict>
         </dict>
         <dict>
@@ -48,7 +49,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_path</key>
-                <string>%pathname%/Komodo Edit 12.app</string>
+                <string>%pathname%/Komodo Edit %MAJOR_VERSION%.app</string>
                 <key>requirement</key>
                 <string>identifier "com.activestate.KomodoEdit" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6L3MMJ36R9"</string>
             </dict>
