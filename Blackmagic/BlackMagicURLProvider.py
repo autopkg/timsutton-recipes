@@ -34,7 +34,6 @@ REQUIRED_REG_KEYS = [
     "email",
     "phone",
     "city",
-    "state",
     "country",
 ]
 
@@ -145,9 +144,7 @@ class BlackMagicURLProvider(URLGetter):
         req_data = {
             "country": "us",
             "platform": "Mac OS X",
-            "product": {
-                "name": self.env["product_name"]
-            }
+            "product": self.env["product_name"]
         }
 
         # if this download needs registration, or we want to register
