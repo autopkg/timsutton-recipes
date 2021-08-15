@@ -16,7 +16,7 @@ SPARKLE_FEED_URL could be overridden to the above if you wish to fetch beta vers
         <key>NAME</key>
         <string>REDCINE-XPRO</string>
         <key>SPARKLE_FEED_URL</key>
-        <string>http://downloads.red.com/software/rcx/rss/mac_pkg.xml</string>
+        <string>https://downloads.red.com/software/rcx/rss/mac_pkg.xml</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
