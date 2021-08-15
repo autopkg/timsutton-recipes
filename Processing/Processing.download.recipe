@@ -17,15 +17,15 @@
     <key>Process</key>
     <array>
         <dict>
-            <key>Processor</key>
-            <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
-                <key>url</key>
-                <string>https://processing.org/download/?processing</string>
-                <key>re_pattern</key>
-                <string>(?P&lt;url&gt;http.*?macosx.zip)</string>
+                <key>asset_regex</key>
+                <string>.*\.zip$</string>
+                <key>github_repo</key>
+                <string>processing/processing</string>
             </dict>
+            <key>Processor</key>
+            <string>GitHubReleasesInfoProvider</string>
         </dict>
         <dict>
             <key>Processor</key>
