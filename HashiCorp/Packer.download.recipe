@@ -19,7 +19,7 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>io.github.hjuutilainen.download.Vault/HashiCorpURLProvider</string>
+            <string>io.github.hjuutilainen.SharedProcessors/HashiCorpURLProvider</string>
             <key>Arguments</key>
             <dict>
                 <key>arch</key>
