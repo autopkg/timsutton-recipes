@@ -12,6 +12,8 @@
         <string>Packer</string>
         <key>PRODUCT</key>
         <string>packer</string>
+        <key>ARCH</key>
+        <string>amd64</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.3.0</string>
@@ -23,7 +25,7 @@
             <key>Arguments</key>
             <dict>
                 <key>arch</key>
-                <string>amd64</string>
+                <string>%ARCH%</string>
                 <key>project_name</key>
                 <string>%PRODUCT%</string>
             </dict>
