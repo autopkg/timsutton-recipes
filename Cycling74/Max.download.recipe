@@ -22,7 +22,7 @@
 				<key>re_pattern</key>
 				<string>(?P&lt;url&gt;https://\w*-maxmspjitter.s3.amazonaws.com.*?dmg)</string>
 				<key>url</key>
-				<string>https://cycling74.com/thanks-for-downloading-max/?os=mac</string>
+				<string>https://cycling74.com/downloads</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
