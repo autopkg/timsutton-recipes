@@ -2,46 +2,49 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the current release of Terraform from http://terraform.io
-and builds a package installing it to /usr/local/bin.</string>
-    <key>Identifier</key>
-    <string>com.github.timsutton.munki.Terraform</string>
-    <key>Input</key>
-    <dict>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/HashiCorp/%NAME%</string>
-        <key>NAME</key>
-        <string>Terraform</string>
-        <key>pkginfo</key>
-        <dict>
-            <key>catalogs</key>
-            <array>
-                <string>testing</string>
-            </array>
-            <key>description</key>
-            <string>Terraform provides a common configuration to launch infrastructure — from physical and virtual servers to email and DNS providers. Once launched, Terraform safely and efficiently changes infrastructure as the configuration is evolved. Simple file based configuration gives you a single view of your entire infrastructure.</string>
-            <key>name</key>
-            <string>%NAME%</string>
-            <key>unattended_install</key>
-            <true/>
-        </dict>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>0.3.0</string>
-    <key>ParentRecipe</key>
-    <string>com.github.timsutton.pkg.Terraform</string>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>repo_subdirectory</key>
-                <string>%MUNKI_REPO_SUBDIR%</string>
-            </dict>
-            <key>Processor</key>
-            <string>MunkiImporter</string>
-        </dict>
-    </array>
+	<key>Description</key>
+	<string>Downloads the current release of Terraform from http://terraform.io
+		and builds a package installing it to /usr/local/bin.
+		Use e.g. -k ARCH=arm64 to specify Apple Silicon-specific builds.</string>
+	<key>Identifier</key>
+	<string>com.github.timsutton.munki.Terraform</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/HashiCorp/%NAME%</string>
+		<key>NAME</key>
+		<string>Terraform</string>
+		<key>ARCH</key>
+		<string>amd64</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Terraform provides a common configuration to launch infrastructure — from physical and virtual servers to email and DNS providers. Once launched, Terraform safely and efficiently changes infrastructure as the configuration is evolved. Simple file based configuration gives you a single view of your entire infrastructure.</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.timsutton.pkg.Terraform</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
 </dict>
 </plist>
