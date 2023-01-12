@@ -2,43 +2,43 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
-	<string>Downloads the current release of Terraform from http://terraform.io
+    <key>Description</key>
+    <string>Downloads the current release of Terraform from http://terraform.io
 		Use e.g. -k ARCH=arm64 to specify Apple Silicon-specific builds.</string>
-	<key>Identifier</key>
-	<string>com.github.timsutton.download.Terraform</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>Terraform</string>
-		<key>PRODUCT</key>
-		<string>terraform</string>
+    <key>Identifier</key>
+    <string>com.github.timsutton.download.Terraform</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Terraform</string>
+        <key>PRODUCT</key>
+        <string>terraform</string>
 		<key>ARCH</key>
 		<string>amd64</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>0.3.0</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/HashiCorpURLProvider</string>
-			<key>Arguments</key>
-			<dict>
-				<key>arch</key>
-				<string>%ARCH%</string>
-				<key>project_name</key>
-				<string>%PRODUCT%</string>
-			</dict>
-		</dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>io.github.hjuutilainen.SharedProcessors/HashiCorpURLProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>arch</key>
+                <string>amd64</string>
+                <key>project_name</key>
+                <string>%PRODUCT%</string>
+            </dict>
+        </dict>
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
-	</array>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
 </dict>
 </plist>
