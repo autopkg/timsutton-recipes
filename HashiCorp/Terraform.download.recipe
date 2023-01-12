@@ -3,7 +3,8 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release of Terraform from http://terraform.io</string>
+    <string>Downloads the current release of Terraform from http://terraform.io
+		Use e.g. -k ARCH=arm64 to specify Apple Silicon-specific builds.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.Terraform</string>
     <key>Input</key>
@@ -12,6 +13,8 @@
         <string>Terraform</string>
         <key>PRODUCT</key>
         <string>terraform</string>
+		<key>ARCH</key>
+		<string>amd64</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.3.0</string>
