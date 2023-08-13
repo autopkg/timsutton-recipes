@@ -17,7 +17,7 @@ later revisions will require a higher OS, so this may be overridden.
         <key>NAME</key>
         <string>Fission2</string>
         <key>SYSTEM_VERSION</key>
-        <string>1070</string>
+        <string>130</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.4.2</string>
@@ -29,7 +29,7 @@ later revisions will require a higher OS, so this may be overridden.
             <key>Arguments</key>
             <dict>
                 <key>alternate_xmlns_url</key>
-                <string>https://rogueamoeba.com/public/rss/sparkle/</string>
+                <string>http://rogueamoeba.com/public/rss/sparkle/</string>
                 <key>appcast_url</key>
                 <string>https://rogueamoeba.net/ping/versionCheck.cgi</string>
                 <key>appcast_query_pairs</key>
