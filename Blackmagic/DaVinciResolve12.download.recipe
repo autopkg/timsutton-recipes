@@ -35,6 +35,8 @@ Notably, REG_STATE and REG_COUNTRY must contain sane values:
         <string></string>
         <key>REG_STATE</key>
         <string></string>
+        <key>REG_STREET</key>
+        <string></string>
         <key>REG_COUNTRY</key>
         <string></string>
     </dict>
@@ -65,6 +67,8 @@ Notably, REG_STATE and REG_COUNTRY must contain sane values:
                     <string>%REG_CITY%</string>
                     <key>state</key>
                     <string>%REG_STATE%</string>
+                    <key>street</key>
+                    <string>%REG_STREET%</string>
                     <key>country</key>
                     <string>%REG_COUNTRY%</string>
                 </dict>
