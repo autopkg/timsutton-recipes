@@ -8,13 +8,27 @@ downloads page.
 
 Note that the installer pkgs have identifiers like 'go1.3.2', 'go1.4', etc.
 As long as this 'go' prefix remains, Munki will compare package versions
-as expected.</string>
+as expected.
+
+As there are separate installers for Intel and Apple Silicon, you will need
+to override two input variables: ARCH and SUPPORTED_ARCHITECTURE, due to how
+these are specified in URLs and by Munki. You can create multiple recipe overrides
+if you need to import both flavors of the installer.
+
+For Apple Silicon:
+ARCH: arm64, SUPPORTED_ARCHITECTURE: arm64
+
+For Intel:
+ARCH: amd64, SUPPORTED_ARCHITECTURE: x86_64
+</string>
     <key>Identifier</key>
     <string>com.github.timsutton.munki.Go</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>Go</string>
+        <key>SUPPORTED_ARCHITECTURE</key>
+        <string>arm64</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/Go</string>
         <key>pkginfo</key>
@@ -28,7 +42,7 @@ as expected.</string>
             <key>display_name</key>
             <string>Go Programming Language</string>
             <key>minimum_os_version</key>
-            <string>10.8</string>
+            <string>10.15</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>
@@ -46,6 +60,10 @@ as expected.</string>
             <dict>
                 <key>additional_pkginfo</key>
                 <dict>
+                    <key>supported_architectures</key>
+                    <array>
+                        <string>%SUPPORTED_ARCHITECTURE%</string>
+                    </array>
                     <key>version</key>
                     <string>%version%</string>
                 </dict>

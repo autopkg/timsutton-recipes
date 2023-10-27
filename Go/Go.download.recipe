@@ -4,15 +4,29 @@
 <dict>
     <key>Description</key>
     <string>Downloads the most recent version of Go for OS X from the official
-Golang downloads page.</string>
+Golang downloads page.
+
+As there are separate installers for Intel and Apple Silicon, you will need
+to override two input variables: ARCH and SUPPORTED_ARCHITECTURE, due to how
+these are specified in URLs and by Munki. You can create multiple recipe overrides
+if you need to import both flavors of the installer.
+
+For Apple Silicon:
+ARCH: arm64, SUPPORTED_ARCHITECTURE: arm64
+
+For Intel:
+ARCH: amd64, SUPPORTED_ARCHITECTURE: x86_64
+</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.Go</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>Go</string>
+        <key>ARCH</key>
+        <string>arm64</string>
         <key>RE_PATTERN</key>
-        <string>href="(?P&lt;href&gt;\/dl.*?go(?P&lt;version&gt;.*?)\.darwin-amd64.pkg)"</string>
+        <string>href="(?P&lt;href&gt;\/dl.*?go(?P&lt;version&gt;.*?)\.darwin-%ARCH%.pkg)"</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.9</string>
