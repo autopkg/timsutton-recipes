@@ -26,7 +26,7 @@
             <key>Arguments</key>
             <dict>
                 <key>arch</key>
-                <string>amd64</string>
+                <string>%ARCH%</string>
                 <key>project_name</key>
                 <string>%PRODUCT%</string>
             </dict>
