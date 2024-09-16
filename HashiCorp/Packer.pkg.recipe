@@ -51,6 +51,17 @@
         </dict>
         <dict>
             <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>path_list</key>
+                <array>
+                    <string>%pkgroot%/usr/local/bin/LICENSE.txt</string>
+                </array>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
             <string>PkgCreator</string>
             <key>Arguments</key>
             <dict>
