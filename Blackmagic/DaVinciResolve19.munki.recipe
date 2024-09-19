@@ -71,7 +71,7 @@ this user's home will be used, and if run at the loginwindow, the root user's ho
     <key>MinimumVersion</key>
     <string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.timsutton.download.davinciresolve18</string>
+    <string>com.github.timsutton.download.davinciresolve19</string>
     <key>Process</key>
     <array>
         <dict>

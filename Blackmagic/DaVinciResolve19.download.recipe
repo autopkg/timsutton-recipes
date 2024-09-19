@@ -13,7 +13,7 @@ Notably, REG_COUNTRY must contain sane values:
 - REG_COUNTRY is of the form 'us', 'ca', etc.
 </string>
     <key>Identifier</key>
-    <string>com.github.timsutton.download.davinciresolve18</string>
+    <string>com.github.timsutton.download.davinciresolve19</string>
     <key>Input</key>
     <dict>
         <!-- Version 14 updates _may_ contain 'Update' in the title, but
