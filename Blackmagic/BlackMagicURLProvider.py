@@ -19,11 +19,11 @@
 
 import json
 import re
-from autopkglib.URLGetter import URLGetter
-from distutils.version import LooseVersion
 from operator import itemgetter
 
+from autopkglib import APLooseVersion as LooseVersion
 from autopkglib import Processor, ProcessorError
+from autopkglib.URLGetter import URLGetter
 
 __all__ = ["BlackMagicURLProvider"]
 
@@ -48,8 +48,7 @@ class BlackMagicURLProvider(URLGetter):
                 "the downloads JSON metadata. Only downloads matching this "
                 "pattern will be considered. This pattern _must_ contain "
                 "at least a named group 'version', which will be used to "
-                "sort the results by evaluating this using distutils' "
-                "LooseVersion."
+                "sort the results by evaluating this using LooseVersion."
         },
         "product_name": {
             "required": True,
@@ -65,8 +64,7 @@ class BlackMagicURLProvider(URLGetter):
                 "the downloads JSON metadata. Only downloads matching this "
                 "pattern will be considered. This pattern _must_ contain "
                 "at least a named group 'version', which will be used to "
-                "sort the results by evaluating this using distutils' "
-                "LooseVersion."
+                "sort the results by evaluating this using LooseVersion."
         },
         "registration_info": {
             "required": False,
@@ -99,10 +97,6 @@ class BlackMagicURLProvider(URLGetter):
 
     def main(self):
         '''Find the download URL'''
-
-        def compare_version(this, that):
-            '''compare LooseVersions'''
-            return cmp(LooseVersion(this), LooseVersion(that))
 
         metadata = self.get_downloads_metadata()
 
