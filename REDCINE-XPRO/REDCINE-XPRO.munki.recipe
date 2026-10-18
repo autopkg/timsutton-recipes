@@ -28,7 +28,7 @@ the pkginfo version with this so that our latest is always the highest.
                 <string>testing</string>
             </array>
             <key>description</key>
-            <string></string>
+            <string>REDCINE-X PRO is RED's software for viewing, color grading and transcoding R3D footage. Includes RED PLAYER.</string>
             <key>display_name</key>
             <string>REDCINE-X PRO</string>
             <key>name</key>
