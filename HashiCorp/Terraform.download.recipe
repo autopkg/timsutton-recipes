@@ -47,7 +47,7 @@
                 <key>archive_path</key>
                 <string>%pathname%</string>
                 <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/pkgroot/usr/local/bin</string>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
                 <key>purge_destination</key>
                 <true/>
             </dict>
@@ -58,7 +58,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_path</key>
-                <string>%RECIPE_CACHE_DIR%/pkgroot/usr/local/bin/terraform</string>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/terraform</string>
                 <key>strict_verification</key>
                 <false/>
                 <key>requirement</key>

@@ -38,15 +38,13 @@
         </dict>
         <dict>
             <key>Processor</key>
-            <string>Unarchiver</string>
+            <string>FileMover</string>
             <key>Arguments</key>
             <dict>
-                <key>archive_path</key>
-                <string>%pathname%</string>
-                <key>destination_path</key>
-                <string>%pkgroot%/usr/local/bin</string>
-                <key>purge_destination</key>
-                <true/>
+                <key>source</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/terraform</string>
+                <key>target</key>
+                <string>%pkgroot%/usr/local/bin/terraform</string>
             </dict>
         </dict>
         <dict>
@@ -74,6 +72,18 @@
                         </dict>
                     </array>
                 </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>path_list</key>
+                <array>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                    <string>%pkgroot%</string>
+                </array>
             </dict>
         </dict>
     </array>
