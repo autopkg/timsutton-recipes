@@ -44,10 +44,6 @@ the pkginfo version with this so that our latest is always the highest.
     <key>Process</key>
     <array>
         <dict>
-            <key>Processor</key>
-            <string>MunkiPkginfoMerger</string>
-        </dict>
-        <dict>
             <key>Arguments</key>
             <dict>
                 <key>flat_pkg_path</key>
