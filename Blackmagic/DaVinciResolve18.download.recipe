@@ -38,7 +38,7 @@ Notably, REG_COUNTRY must contain sane values:
         <string></string>
     </dict>
     <key>MinimumVersion</key>
-    <string>2.0.0</string>
+    <string>2.0.1</string>
     <key>Process</key>
     <array>
         <dict>

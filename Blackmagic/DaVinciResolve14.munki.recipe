@@ -69,7 +69,7 @@ this user's home will be used, and if run at the loginwindow, the root user's ho
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.9</string>
+    <string>2.0.1</string>
     <key>ParentRecipe</key>
     <string>com.github.timsutton.download.davinciresolve14</string>
     <key>Process</key>

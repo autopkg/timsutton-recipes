@@ -37,7 +37,7 @@ recipe.
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.9</string>
+    <string>2.0.1</string>
     <key>ParentRecipe</key>
     <string>com.github.timsutton.download.fusion8</string>
     <key>Process</key>
