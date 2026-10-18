@@ -15,11 +15,20 @@
     <array>
         <dict>
             <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>This recipe is deprecated and will be removed in the future. New versions of iTunes are no longer available for standalone download. This recipe provides the dmg for iTunes 12.8.3. Other versions can be found here: https://support.apple.com/en-us/docs/software/pl295</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
             <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>https://www.apple.com/itunes/download/</string>
+                <string>https://support.apple.com/en-us/106374</string>
                 <key>re_pattern</key>
                 <string>https://secure.*?dmg</string>
             </dict>
@@ -36,6 +45,21 @@
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/Install iTunes.pkg</string>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Software Update</string>
+                    <string>Apple Software Update Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
+            </dict>
         </dict>
     </array>
 </dict>
