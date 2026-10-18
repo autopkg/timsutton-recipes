@@ -4,7 +4,7 @@
 <dict>
     <key>Description</key>
     <string>Downloads the current release of Terraform from http://terraform.io
-		Use e.g. -k ARCH=arm64 to specify Apple Silicon-specific builds.</string>
+        Use e.g. -k ARCH=arm64 to specify Apple Silicon-specific builds.</string>
     <key>Identifier</key>
     <string>com.github.timsutton.download.Terraform</string>
     <key>Input</key>
@@ -13,8 +13,8 @@
         <string>Terraform</string>
         <key>PRODUCT</key>
         <string>terraform</string>
-		<key>ARCH</key>
-		<string>amd64</string>
+        <key>ARCH</key>
+        <string>amd64</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.3.0</string>
@@ -31,13 +31,39 @@
                 <string>%PRODUCT%</string>
             </dict>
         </dict>
-		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>archive_path</key>
+                <string>%pathname%</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/pkgroot/usr/local/bin</string>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%RECIPE_CACHE_DIR%/pkgroot/usr/local/bin/terraform</string>
+                <key>strict_verification</key>
+                <false/>
+                <key>requirement</key>
+                <string>identifier terraform and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = D38WU7D763</string>
+            </dict>
         </dict>
     </array>
 </dict>
